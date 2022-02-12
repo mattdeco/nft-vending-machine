@@ -1,0 +1,16 @@
+.container {
+	background: url("/images/solanaShape2-full.png") no-repeat center center;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.header {
+	margin: 0 auto;
+	margin-bottom: 32px;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+}

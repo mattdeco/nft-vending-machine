@@ -1,0 +1,46 @@
+.container {
+	background: url("/images/solanaShape2-full.png") no-repeat center center;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.header {
+	margin: 0 auto;
+	margin-bottom: 32px;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+}
+
+.success {
+	align-items: center;
+	background: linear-gradient(
+			180deg,
+			rgba(0, 237, 38, 0.14) 0%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		rgba(17, 17, 17, 0.88);
+	border-radius: 8px;
+	backdrop-filter: blur(10px);
+	display: flex;
+	flex-direction: column;
+	height: 512px;
+	justify-content: center;
+	text-align: center;
+	width: 512px;
+}
+
+.subtitle {
+	color: #aaa;
+	font-weight: 500;
+	font-size: 24px;
+}
+
+.walletAddress {
+	color: #fff;
+	font-size: 24px;
+	font-weight: 800;
+}

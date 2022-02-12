@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Solana NFT Vending Machine
+
+This is a proof of concept of an NFT vending machine built using [Solana Pay](https://solanapay.com), [Metaplex](https://www.metaplex.com), [Phantom Mobile](https://phantom.app), and [Next.js](https://nextjs.org). This was created and demoed at the 2022 Los Angeles Hacker House presented by Solana and FTX US.
+
+This was created over the course of approximately 2 days and certainly puts the "hack" in Hacker House. This is intended as example code, please use caution if you plan on deploying this for anything "real".
+
+## Dependencies
+
+- [Node 14.x](https://nodejs.org)
+- [Yarn 1.x](https://yarnpkg.com)
+- [Metaboss](https://metaboss.rs) (installed globally via `cargo install metaboss` or elsewhere in your `$PATH`)
 
 ## Getting Started
 
-First, run the development server:
+### Step 1: Install Dependencies
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+`yarn install`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Step 2: Set Environment Variables
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+This project uses Next.js' built-in [environment variables](https://nextjs.org/docs/basic-features/environment-variables) support. Create a file named `.env.local` at the root of this repository. See `.env.example` for details on what to include in this file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The environment variables are:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- `NEXT_PUBLIC_RPC_URL`: The RPC server to connect to.
+- `NEXT_PUBLIC_MERCHANT_WALLET_PUBKEY`: The public key of the wallet that will receive transaction funds, mint NFTs, and be set as the update authority on the NFTs.
+- `MERCHANT_KEYPAIR_PATH`: The path to the keypair file of the merchant wallet.
+- `NFT_COLLECTION_SIZE`: The quantity of random NFTs to choose from when minting.
+- `NFT_COLLECTION_PATH`: The location of the directory that contains the on-chain JSON data files used to mint by Metaboss.
+- `NEXT_PUBLIC_SOLANA_PAY_TRANSACTION_AMOUNT`: How much to charge for the NFTs, leave blank to allow customers to name their own price.
+- `NEXT_PUBLIC_SOLANA_PAY_TRANSACTION_LABEL`, `NEXT_PUBLIC_SOLANA_PAY_TRANSACTION_MESSAGE`, and `NEXT_PUBLIC_SOLANA_PAY_TRANSACTION_MEMO`: Transaction metadata fields in the Solana Pay standard.
 
-## Learn More
+### Step 3: Start the vending machine
 
-To learn more about Next.js, take a look at the following resources:
+Run `yarn dev`, then navigate to http://localhost:3000.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Overview of a Transaction
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The overall lifecycle of a vending machine transaction consists of the following:
 
-## Deploy on Vercel
+1. A QR code is generated using the Solana Pay SDK that includes a reference ID based on a generated public key.
+2. The vending machine polls to check for an on-chain transaction that include the reference ID.
+3. Phantom Mobile is used to scan the Solana Pay QR code, which builds a transaction that is confirmed by the customer on their mobile device.
+4. The vending machine detects the transaction on-chain based on the reference ID, then begins polling to determine the validity and state of the on-chain transaction.
+5. Once the on-chain transaction is fully confirmed, the customer's wallet address is retrieved and is then used as the recipient when Metaboss is used to mint the NFT.
+6. The vending machine displays a success (or error) message to the customer, then generates a new QR code with a new reference ID and returns to the idle state.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Notable portions of this codebase include:
+
+- `pages/index.jsx`: The React page component that contains the majority of the UI and transaction polling / confirmation logic.
+- `pages/api/mint.js`: The API route that invokes Metaboss to mint an NFT.
+- `components/`: Miscellaneous UI components.
+- `assets/`: The NFT assets including images and both on- and off-chain metadata.
+
+## To Do
+
+1. Right now this handles the payment to the merchant and the minting of the NFT as two separate transactions. Ideally, this should be refactored to be a fully on-chain, atomic transaction that will automatically return funds to the customer in the event of a mint failure.
+2. Refactor assorted UI components to focus reusability and standardization.
+
+## Additional Resources
+
+- [UI and Visual Assets](https://www.figma.com/community/file/1074430867825946277/NFT-Vending-Machine) have been shared via the Figma Community.
