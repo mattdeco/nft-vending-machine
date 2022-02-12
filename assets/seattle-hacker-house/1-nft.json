@@ -1,0 +1,13 @@
+{
+	"name": "Seattle Hacker House 2022",
+	"symbol": "SEAHH2022",
+	"uri": "https://arweave.net/pKaJ5sknY09WvGksLhwPq1_g3DfVcMQF0uXwNsfL76c",
+	"seller_fee_basis_points": 206,
+	"creators": [
+		{
+			"address": "Ro7fpSSzufdLMmUG4wzXpByxZbkQ5GRZsUCqmzaQqep",
+			"verified": true,
+			"share": 100
+		}
+	]
+}

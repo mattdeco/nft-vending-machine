@@ -1,0 +1,44 @@
+{
+	"name": "LA Hacker House 2022",
+	"symbol": "LAHH2022",
+	"image": "https://arweave.net/4jmqJzJXDXLewk1xTePzU6FKGf3oID0fUtjaoPOIw5s?ext=jpg",
+	"description": "This NFT was minted at the first ever Metaplex x FTX US Solana LA Hacker House on Saturday February 5th, 2022.",
+	"seller_fee_basis_points": 818,
+	"collection": {
+		"name": "LA Hacker House 2022",
+		"family": "LA Hacker House"
+	},
+	"attributes": [
+		{
+			"trait_type": "Venue Area",
+			"value": "NFT Gallery"
+		},
+		{
+			"trait_type": "Weather",
+			"value": "Sunny"
+		},
+		{
+			"trait_type": "Neighborhood",
+			"value": "Hollywood"
+		},
+		{
+			"trait_type": "Vibes",
+			"value": "Good"
+		}
+	],
+	"properties": {
+		"files": [
+			{
+				"uri": "https://arweave.net/4jmqJzJXDXLewk1xTePzU6FKGf3oID0fUtjaoPOIw5s?ext=jpg",
+				"type": "image/jpg"
+			}
+		],
+		"category": "image",
+		"creators": [
+			{
+				"address": "AJDxKYZKMzebhWP5Q5DcNVBoqqkbokdjmRfioQ8Pd8wa",
+				"share": 100
+			}
+		]
+	}
+}

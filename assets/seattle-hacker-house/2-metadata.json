@@ -1,0 +1,44 @@
+{
+	"name": "Seattle Hacker House 2022",
+	"symbol": "SEAHH2022",
+	"image": "https://arweave.net/W2mfUfCwC5QuacQFRkxpQjOYknO_F_y0nRoLhjj0TC0?ext=jpg",
+	"description": "This NFT was minted at the first ever Metaplex x Solana Seattle Hacker House on Saturday February 12th, 2022.",
+	"seller_fee_basis_points": 206,
+	"collection": {
+		"name": "Seattle Hacker House 2022",
+		"family": "Seattle Hacker House"
+	},
+	"attributes": [
+		{
+			"trait_type": "Photo",
+			"value": "Chihuly"
+		},
+		{
+			"trait_type": "Weather",
+			"value": "Clear Skies"
+		},
+		{
+			"trait_type": "Neighborhood",
+			"value": "SODO"
+		},
+		{
+			"trait_type": "Vibes",
+			"value": "Good"
+		}
+	],
+	"properties": {
+		"files": [
+			{
+				"uri": "https://arweave.net/W2mfUfCwC5QuacQFRkxpQjOYknO_F_y0nRoLhjj0TC0?ext=jpg",
+				"type": "image/jpg"
+			}
+		],
+		"category": "image",
+		"creators": [
+			{
+				"address": "Ro7fpSSzufdLMmUG4wzXpByxZbkQ5GRZsUCqmzaQqep",
+				"share": 100
+			}
+		]
+	}
+}
