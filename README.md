@@ -9,6 +9,7 @@ This was created over the course of approximately 2 days and certainly puts the 
 - [Node 14.x](https://nodejs.org)
 - [Yarn 1.x](https://yarnpkg.com)
 - [Metaboss](https://metaboss.rs) (installed globally via `cargo install metaboss` or elsewhere in your `$PATH`)
+- [spl-token](https://spl.solana.com/token#setup) (installed globally via `cargo install spl-token-cli` or elsewhere in your `$PATH`)
 
 ## Getting Started
 
@@ -25,6 +26,7 @@ The environment variables are:
 - `NEXT_PUBLIC_RPC_URL`: The RPC server to connect to.
 - `NEXT_PUBLIC_MERCHANT_WALLET_PUBKEY`: The public key of the wallet that will receive transaction funds, mint NFTs, and be set as the update authority on the NFTs.
 - `MERCHANT_KEYPAIR_PATH`: The path to the keypair file of the merchant wallet.
+- `NEXT_PUBLIC_VENDING_MODE`: Set to `mint` to mint NFTs on-demand, set to `transfer` to send pre-minted NFTs from the merchant wallet.
 - `NFT_COLLECTION_SIZE`: The quantity of random NFTs to choose from when minting.
 - `NFT_COLLECTION_PATH`: The location of the directory that contains the on-chain JSON data files used to mint by Metaboss.
 - `NEXT_PUBLIC_SOLANA_PAY_TRANSACTION_AMOUNT`: How much to charge for the NFTs, leave blank to allow customers to name their own price.
@@ -42,7 +44,7 @@ The overall lifecycle of a vending machine transaction consists of the following
 2. The vending machine polls to check for an on-chain transaction that include the reference ID.
 3. Phantom Mobile is used to scan the Solana Pay QR code, which builds a transaction that is confirmed by the customer on their mobile device.
 4. The vending machine detects the transaction on-chain based on the reference ID, then begins polling to determine the validity and state of the on-chain transaction.
-5. Once the on-chain transaction is fully confirmed, the customer's wallet address is retrieved and is then used as the recipient when Metaboss is used to mint the NFT.
+5. Once the on-chain transaction is fully confirmed, the customer's wallet address is retrieved and is then used as the recipient when Metaboss is used to mint the NFT or when spl-token is used to transfer the NFT.
 6. The vending machine displays a success (or error) message to the customer, then generates a new QR code with a new reference ID and returns to the idle state.
 
 ## Project Structure
@@ -51,6 +53,7 @@ Notable portions of this codebase include:
 
 - `pages/index.jsx`: The React page component that contains the majority of the UI and transaction polling / confirmation logic.
 - `pages/api/mint.js`: The API route that invokes Metaboss to mint an NFT.
+- `pages/api/transfer.js`: The API route that invokes spl-token to transfer an NFT.
 - `components/`: Miscellaneous UI components.
 - `assets/`: The NFT assets including images and both on- and off-chain metadata.
 

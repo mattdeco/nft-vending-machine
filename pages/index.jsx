@@ -39,6 +39,14 @@ export default function Home() {
     IDLE: "Idle",
   };
 
+  // vending machine mode
+  let apiUrl;
+  if (process.env.NEXT_PUBLIC_VENDING_MODE === "mint") {
+    apiUrl = "api/mint";
+  } else if (process.env.NEXT_PUBLIC_VENDING_MODE === "transfer") {
+    apiUrl = "api/transfer";
+  }
+
   // track transaction state
   const [status, setStatus] = useState({
     state: STATES.POLL_FOR_SIGNATURE,
@@ -101,7 +109,7 @@ export default function Home() {
                         setStatus({ state: STATES.AWAIT_FOR_NFT_MINT });
 
                         // mint the NFT
-                        fetch(`api/mint?signer=${signer}`)
+                        fetch(`${apiUrl}?signer=${signer}`)
                           .then((res) => {
                             if (res.ok) {
                               // mint success
@@ -133,7 +141,7 @@ export default function Home() {
                         state: STATES.ERROR,
                         data: err,
                       });
-                      console.err(err);
+                      console.error(err);
 
                       // stop polling for transaction
                       clearInterval(sigSetInterval);
