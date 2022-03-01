@@ -33,6 +33,12 @@ export default function handler(req, res) {
           }
         });
 
+        if (stockedNftAccounts.length === 0) {
+          return res
+            .status(500)
+            .json({ success: false, err: "No NFTs available." });
+        }
+
         // choose a random one
         const randomEdition = Math.floor(
           Math.random() * stockedNftAccounts.length
