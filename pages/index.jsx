@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { Connection } from "@solana/web3.js";
 import {
@@ -8,18 +6,22 @@ import {
   FindTransactionSignatureError,
   validateTransactionSignature,
 } from "@solana/pay";
+
+import { STATES } from "../lib/constants";
 import { generateQRParams } from "../lib/qrparams";
 import { getSigner } from "../lib/getsigner";
-import styles from "./index.module.css";
-import PollForSignature from "../components/PollForSignature";
-import LoadingScreen from "../components/LoadingScreen";
-import ErrorScreen from "../components/ErrorScreen";
+
+import PollForSignature from "../components/poll-for-signature/PollForSignature";
+import LoadingScreen from "../components/loading-screen/LoadingScreen";
+import ErrorScreen from "../components/error-screen/ErrorScreen";
+import Header from "../components/header/Header";
+
+import styles from "./index.module.scss";
 
 export default function Home() {
-  // next.js router
   const router = useRouter();
 
-  // get QR code params
+  // QR code params
   const qrParams = generateQRParams();
 
   // solana connection
@@ -27,17 +29,6 @@ export default function Home() {
     process.env.NEXT_PUBLIC_RPC_URL,
     "confirmed"
   );
-
-  const STATES = {
-    POLL_FOR_SIGNATURE: "Polling for transaction signature...",
-    AWAIT_FOR_VALIDATION: "Validating transaction signature...",
-    POLL_FOR_FINAL_TRANSACTION: "Getting final transaction details...",
-    AWAIT_FOR_NFT_MINT: "Your NFT is being minted!",
-    NFT_MINT_SUCCESS: "Your NFT is now minted!",
-    NFT_MINT_ERROR: "An error occured while minting your NFT.",
-    ERROR: "An unknown error occured.",
-    IDLE: "Idle",
-  };
 
   // vending machine mode
   let apiUrl;
@@ -47,7 +38,7 @@ export default function Home() {
     apiUrl = "api/transfer";
   }
 
-  // track transaction state
+  // transaction state
   const [status, setStatus] = useState({
     state: STATES.POLL_FOR_SIGNATURE,
     data: null,
@@ -58,7 +49,7 @@ export default function Home() {
     if (status.state === STATES.NFT_MINT_SUCCESS) {
       router.push(`/success`);
     }
-  }, [status]);
+  }, [status, router]);
 
   useEffect(() => {
     let interval;
@@ -108,11 +99,11 @@ export default function Home() {
 
                         setStatus({ state: STATES.AWAIT_FOR_NFT_MINT });
 
-                        // mint the NFT
+                        // mint or transfer the NFT
                         fetch(`${apiUrl}?signer=${signer}`)
                           .then((res) => {
                             if (res.ok) {
-                              // mint success
+                              // success
                               setStatus({
                                 state: STATES.NFT_MINT_SUCCESS,
                               });
@@ -184,23 +175,12 @@ export default function Home() {
 
     // kick off finding and validating the signature + transaction
     findAndValidate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <Image
-          src="/images/header.png"
-          width={1080}
-          height={100}
-          alt="Header"
-        />
-      </header>
-
-      <Head>
-        <title>NFT Vending Machine</title>
-      </Head>
-
+      <Header />
       <main className={styles.main}>
         {(status.state === STATES.POLL_FOR_SIGNATURE && (
           <PollForSignature qrCodeParams={qrParams} />

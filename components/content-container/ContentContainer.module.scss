@@ -1,0 +1,18 @@
+@use "../../styles/tokens.scss";
+
+.content-container {
+	align-items: center;
+	background-color: tokens.$background-dark-100;
+	backdrop-filter: blur(10px);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	height: 512px;
+	justify-content: center;
+	text-align: center;
+	width: 512px;
+}
+
+.success {
+	background: tokens.$background-success, tokens.$background-dark-100;
+}

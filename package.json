@@ -14,8 +14,10 @@
     "bignumber.js": "^9.0.2",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",
+    "prop-types": "^15.8.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "eslint": "8.10.0",

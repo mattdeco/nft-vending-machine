@@ -1,6 +1,6 @@
 import { createQR, encodeURL } from "@solana/pay";
 import { useEffect, useRef } from "react";
-import styles from "./QRCode.module.css";
+import styles from "./QRCode.module.scss";
 
 const QRCode = ({ qrCodeParams }) => {
   const ref = useRef();

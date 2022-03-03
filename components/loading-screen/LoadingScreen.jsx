@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
-import styles from "./LoadingScreen.module.css";
+import ContentContainer from "../content-container/ContentContainer";
+import styles from "./LoadingScreen.module.scss";
 
 const LoadingScreen = ({ title, message }) => {
   return (
-    <div className={styles.loading}>
+    <ContentContainer>
       <Loader />
       <h1>{title}</h1>
       <p>{message}</p>
-    </div>
+    </ContentContainer>
   );
 };
 
