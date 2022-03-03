@@ -1,5 +1,7 @@
+@use "../styles/tokens.scss";
+
 .container {
-	background: url("/images/solanaShape2-full.png") no-repeat center center;
+	background: url(tokens.$background-image) no-repeat center center;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
