@@ -31,11 +31,13 @@ export default function Home() {
   );
 
   // vending machine mode
+  const isTransferMode = process.env.NEXT_PUBLIC_VENDING_MODE === "transfer";
   let apiUrl;
-  if (process.env.NEXT_PUBLIC_VENDING_MODE === "mint") {
-    apiUrl = "api/mint";
-  } else if (process.env.NEXT_PUBLIC_VENDING_MODE === "transfer") {
+
+  if (isTransferMode) {
     apiUrl = "api/transfer";
+  } else {
+    apiUrl = "api/mint";
   }
 
   // transaction state
@@ -57,7 +59,7 @@ export default function Home() {
       fetch("api/balance")
         .then((res) => res.json())
         .then(({ balance }) => {
-          if (balance === 3) {
+          if (balance === 0) {
             router.push("/soldout");
           }
         })
@@ -215,13 +217,21 @@ export default function Home() {
           )) ||
           (status.state === STATES.AWAIT_FOR_NFT_MINT && (
             <LoadingScreen
-              title="Minting NFT"
-              message={STATES.AWAIT_FOR_NFT_MINT}
+              title={isTransferMode ? "Transferring NFT" : "Minting NFT"}
+              message={
+                isTransferMode
+                  ? STATES.AWAIT_FOR_NFT_TRANSFER
+                  : STATES.AWAIT_FOR_NFT_MINT
+              }
             />
           )) ||
           (status.state === STATES.NFT_MINT_ERROR && (
             <ErrorScreen
-              message={STATES.NFT_MINT_ERROR}
+              message={
+                isTransferMode
+                  ? STATES.NFT_TRANSFER_ERROR
+                  : STATES.NFT_MINT_ERROR
+              }
               errorData={status.data}
             />
           )) ||
