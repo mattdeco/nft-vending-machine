@@ -52,6 +52,22 @@ export default function Home() {
   }, [status, router]);
 
   useEffect(() => {
+    // go to sold out screen if balance is 0
+    if (process.env.NEXT_PUBLIC_VENDING_MODE === "transfer") {
+      fetch("api/balance")
+        .then((res) => res.json())
+        .then(({ balance }) => {
+          if (balance === 3) {
+            router.push("/soldout");
+          }
+        })
+        .catch((err) => {
+          setStatus({ state: STATES.ERROR, data: err });
+        });
+    }
+  }, [router]);
+
+  useEffect(() => {
     let interval;
     let sigSetInterval;
 
@@ -204,10 +220,13 @@ export default function Home() {
             />
           )) ||
           (status.state === STATES.NFT_MINT_ERROR && (
-            <ErrorScreen message={STATES.NFT_MINT_ERROR} />
+            <ErrorScreen
+              message={STATES.NFT_MINT_ERROR}
+              errorData={status.data}
+            />
           )) ||
           (status.state === STATES.ERROR && (
-            <ErrorScreen message={STATES.ERROR} />
+            <ErrorScreen message={STATES.ERROR} errorData={status.data} />
           ))}
       </main>
 
