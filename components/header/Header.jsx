@@ -9,7 +9,7 @@ const Header = () => {
         <title>NFT Vending Machine</title>
       </Head>
       <Image
-        src="/images/header.png"
+        src="/images/themes/sxsw2022/header.png"
         width={1080}
         height={100}
         alt="Header"
