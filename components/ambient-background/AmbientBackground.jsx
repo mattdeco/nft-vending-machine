@@ -21,24 +21,24 @@ const AmbientBackground = ({ animate }) => {
             height="1920"
             fill="url(#paint1_linear_118_8)"
             fillOpacity="0.6"
-            style={{ "mix-blend-mode": "multiply" }}
+            style={{ mixBlendMode: "multiply" }}
           />
-          <g style={{ "mix-blend-mode": "multiply" }} opacity="0.8">
+          <g style={{ mixBlendMode: "multiply" }} opacity="0.8">
             <rect
               width="2563"
               height="2563"
               transform="translate(-746 802)"
               fill="url(#paint2_radial_118_8)"
-              style={{ "mix-blend-mode": "multiply" }}
+              style={{ mixBlendMode: "multiply" }}
             />
           </g>
-          <g style={{ "mix-blend-mode": "multiply" }} opacity="0.8">
+          <g style={{ mixBlendMode: "multiply" }} opacity="0.8">
             <rect
               width="2563"
               height="2563"
               transform="translate(-746 -1603)"
               fill="url(#paint3_radial_118_8)"
-              style={{ "mix-blend-mode": "multiply" }}
+              style={{ mixBlendMode: "multiply" }}
             />
           </g>
         </g>
