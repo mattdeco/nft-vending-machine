@@ -7,7 +7,7 @@ const QRCode = ({ qrCodeParams }) => {
 
   useEffect(() => {
     const encodedParams = encodeURL(qrCodeParams);
-    const qrCode = createQR(encodedParams, 512, "#1e1e1e", "#e1e1e1");
+    const qrCode = createQR(encodedParams, 512, "transparent", "#e1e1e1");
 
     if (ref.current) {
       ref.current.innerHTML = "";

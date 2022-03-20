@@ -1,5 +1,9 @@
 @use "./tokens.scss";
 
+* {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	background: tokens.$grey-100;
@@ -10,6 +14,12 @@ body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 h1,
@@ -38,10 +48,6 @@ h3 {
 a {
 	color: inherit;
 	text-decoration: none;
-}
-
-* {
-	box-sizing: border-box;
 }
 
 $level-size: 0.4rem;

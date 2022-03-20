@@ -52,6 +52,7 @@ The overall lifecycle of a vending machine transaction consists of the following
 Notable portions of this codebase include:
 
 - `lib/constants.js`: Copy and other content-related settings.
+- `styles/tokens.scss`: Design tokens such as colors.
 - `pages/index.jsx`: The React page component that contains the majority of the UI and transaction polling / confirmation logic.
 - `pages/api/mint.js`: The API route that invokes Metaboss to mint an NFT.
 - `pages/api/transfer.js`: The API route that invokes spl-token to transfer an NFT.
@@ -61,7 +62,6 @@ Notable portions of this codebase include:
 ## To Do
 
 1. Right now this handles the payment to the merchant and the minting of the NFT as two separate transactions. Ideally, this should be refactored to be a fully on-chain, atomic transaction that will automatically return funds to the customer in the event of a mint failure.
-2. Refactor assorted UI components to focus reusability and standardization.
 
 ## Additional Resources
 

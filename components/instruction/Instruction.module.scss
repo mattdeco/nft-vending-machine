@@ -4,6 +4,7 @@
 	background: tokens.$background-dark-100;
 	border-radius: 8px;
 	backdrop-filter: blur(10px);
+	box-shadow: 0 0 4px tokens.$background-dark-100;
 	margin: 16px 0;
 	padding: 32px;
 	text-align: center;
