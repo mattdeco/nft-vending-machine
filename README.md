@@ -2,8 +2,6 @@
 
 This is a proof of concept of an NFT vending machine built using [Solana Pay](https://solanapay.com), [Metaplex](https://www.metaplex.com), [Phantom Mobile](https://phantom.app), and [Next.js](https://nextjs.org). This was created and demoed at the 2022 Los Angeles Hacker House presented by Solana and FTX US.
 
-This was created over the course of approximately 2 days and certainly puts the "hack" in Hacker House. This is intended as example code, please use caution if you plan on deploying this for anything "real".
-
 ## Dependencies
 
 - [Node 14.x](https://nodejs.org)
