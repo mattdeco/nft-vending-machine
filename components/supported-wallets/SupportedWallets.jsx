@@ -19,6 +19,7 @@ const SupportedWallets = () => {
                 width={wallet.width}
                 height={wallet.height}
                 alt={wallet.name}
+                priority
               />
             </div>
           );
