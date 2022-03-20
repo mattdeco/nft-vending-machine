@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { INSTRUCTION_STEPS } from "../../lib/constants";
 import ContentContainer from "../content-container/ContentContainer";
 import QRCode from "../qr-code/QRCode";
@@ -33,12 +32,10 @@ const PollForSignature = ({ qrCodeParams }) => {
       </ContentContainer>
 
       <div className={styles.instructions}>
-        <AnimatePresence>
-          <Instruction
-            stepNumber={currentInstruction}
-            stepText={INSTRUCTION_STEPS[currentInstruction - 1]}
-          />
-        </AnimatePresence>
+        <Instruction
+          stepNumber={currentInstruction}
+          stepText={INSTRUCTION_STEPS[currentInstruction - 1]}
+        />
       </div>
       <SupportedWallets />
       <CreditLine />
