@@ -34,7 +34,7 @@ The environment variables are:
 
 ### Step 3: Start the vending machine
 
-Run `yarn dev`, then navigate to http://localhost:3000.
+Run `yarn dev`, then navigate to http://localhost:3000. Alternatively, run `yarn build && yarn start` if you want to run in Production mode for performance reasons.
 
 ## Overview of a Transaction
 
@@ -51,6 +51,7 @@ The overall lifecycle of a vending machine transaction consists of the following
 
 Notable portions of this codebase include:
 
+- `lib/constants.js`: Copy and other content-related settings.
 - `pages/index.jsx`: The React page component that contains the majority of the UI and transaction polling / confirmation logic.
 - `pages/api/mint.js`: The API route that invokes Metaboss to mint an NFT.
 - `pages/api/transfer.js`: The API route that invokes spl-token to transfer an NFT.
