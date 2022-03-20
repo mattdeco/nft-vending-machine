@@ -5,22 +5,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-}
-
-.content {
-	padding: 32px 64px;
-}
-
-.headline {
-	margin: 0 0 24px 0;
-}
-
-.subhead {
-	margin: 0 0 24px 0;
-}
-
-.body {
-	margin: 0 0 16px 0;
+	width: 100%;
 }
 
 .codecontainer {
@@ -29,12 +14,4 @@
 
 .instructions {
 	margin: 0 0 32px 0;
-}
-
-.credit {
-	padding: 32px 0 0 0;
-}
-
-.credit-line {
-	color: tokens.$grey-300;
 }

@@ -6,6 +6,8 @@ import QRCode from "../qr-code/QRCode";
 import Instruction from "../instruction/Instruction";
 import styles from "./PollForSignature.module.scss";
 import SupportedWallets from "../supported-wallets/SupportedWallets";
+import HeroCopy from "./HeroCopy";
+import CreditLine from "./CreditLine";
 
 const PollForSignature = ({ qrCodeParams }) => {
   const [currentInstruction, setCurrentInstruction] = useState(1);
@@ -25,19 +27,7 @@ const PollForSignature = ({ qrCodeParams }) => {
 
   return (
     <div className={styles.container}>
-      <ContentContainer autoHeight={false}>
-        <div className={styles["content"]}>
-          <h1 className={styles["headline"]}>NFT Vending Machine</h1>
-          <h2 className={styles["subhead"]}>
-            All proceeds will be sent to the <strong>#HELPUKRAINE</strong> fund
-            <br />
-            supported by Solana and Metaplex.
-          </h2>
-          <h3 className={styles["body"]}>
-            Pay [x] SOL and you’ll receive an NFT from the available supply.
-          </h3>
-        </div>
-      </ContentContainer>
+      <HeroCopy />
       <ContentContainer>
         <QRCode qrCodeParams={qrCodeParams} />
       </ContentContainer>
@@ -51,9 +41,7 @@ const PollForSignature = ({ qrCodeParams }) => {
         </AnimatePresence>
       </div>
       <SupportedWallets />
-      <div className={styles["credit"]}>
-        <p className={styles["credit-line"]}>built by @mattdeco</p>
-      </div>
+      <CreditLine />
     </div>
   );
 };
