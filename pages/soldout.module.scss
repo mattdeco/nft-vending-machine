@@ -1,7 +1,6 @@
 @use "../styles/tokens.scss";
 
 .container {
-	background: url(tokens.$background-image) no-repeat center center;
 	display: flex;
 	flex-direction: column;
 	height: 100vh;

@@ -15,6 +15,7 @@ import PollForSignature from "../components/poll-for-signature/PollForSignature"
 import LoadingScreen from "../components/loading-screen/LoadingScreen";
 import ErrorScreen from "../components/error-screen/ErrorScreen";
 import Header from "../components/header/Header";
+import AmbientBackground from "../components/ambient-background/AmbientBackground";
 
 import styles from "./index.module.scss";
 
@@ -198,6 +199,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <AmbientBackground />
       <Header />
       <main className={styles.main}>
         {(status.state === STATES.POLL_FOR_SIGNATURE && (
