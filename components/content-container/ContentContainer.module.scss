@@ -5,12 +5,22 @@
 	background-color: tokens.$background-dark-100;
 	backdrop-filter: blur(10px);
 	border-radius: 8px;
+	box-shadow: 0 0 8px tokens.$background-dark-100;
 	display: flex;
 	flex-direction: column;
-	height: 512px;
+	min-height: 512px;
 	justify-content: center;
+	margin: 0 0 24px 0;
 	text-align: center;
-	width: 512px;
+	min-width: 512px;
+}
+
+.auto-height {
+	min-height: auto;
+}
+
+.default {
+	background: tokens.$background-dark-100;
 }
 
 .success {

@@ -6,8 +6,10 @@ const LoadingScreen = ({ title, message }) => {
   return (
     <ContentContainer>
       <Loader />
-      <h1>{title}</h1>
-      <p>{message}</p>
+      <div className={styles["content"]}>
+        <h1>{title}</h1>
+        <p>{message}</p>
+      </div>
     </ContentContainer>
   );
 };

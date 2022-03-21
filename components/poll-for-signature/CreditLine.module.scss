@@ -1,0 +1,9 @@
+@use "../../styles/tokens.scss";
+
+.credit {
+	padding: 32px 0 0 0;
+}
+
+.credit-line {
+	color: tokens.$grey-300;
+}

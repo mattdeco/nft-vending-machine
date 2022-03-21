@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Head from "next/head";
 import styles from "./Header.module.scss";
+import { HEADER_IMAGE } from "../../lib/constants";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
         <title>NFT Vending Machine</title>
       </Head>
       <Image
-        src="/images/header.png"
+        src={HEADER_IMAGE}
         width={1080}
         height={100}
         alt="Header"

@@ -1,0 +1,33 @@
+@use "../../styles/tokens.scss";
+
+.wallets {
+	align-items: center;
+	background-color: tokens.$background-dark-100;
+	backdrop-filter: blur(10px);
+	border-radius: 8px;
+	box-shadow: 0 0 4px tokens.$background-dark-100;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 32px;
+}
+
+.wallets-headline {
+	margin: 0 0 16px 0;
+}
+
+.wallets-logos {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+
+.wallet-logo {
+	margin: 0 0 16px 0;
+}
+
+.wallet-logo:last-child {
+	margin: 0;
+}

@@ -1,8 +1,8 @@
 # Solana NFT Vending Machine
 
-This is a proof of concept of an NFT vending machine built using [Solana Pay](https://solanapay.com), [Metaplex](https://www.metaplex.com), [Phantom Mobile](https://phantom.app), and [Next.js](https://nextjs.org). This was created and demoed at the 2022 Los Angeles Hacker House presented by Solana and FTX US.
+![Screenshot of main UI](/public/images/readme-screenshot.jpg)
 
-This was created over the course of approximately 2 days and certainly puts the "hack" in Hacker House. This is intended as example code, please use caution if you plan on deploying this for anything "real".
+This is a proof of concept of an NFT vending machine built using [Solana Pay](https://solanapay.com), [Metaplex](https://www.metaplex.com), [Phantom Mobile](https://phantom.app), and [Next.js](https://nextjs.org). This was created and demoed at the 2022 Los Angeles Hacker House presented by Solana and FTX US.
 
 ## Dependencies
 
@@ -34,7 +34,7 @@ The environment variables are:
 
 ### Step 3: Start the vending machine
 
-Run `yarn dev`, then navigate to http://localhost:3000.
+Run `yarn dev`, then navigate to http://localhost:3000. Alternatively, run `yarn build && yarn start` if you want to run in Production mode for performance reasons.
 
 ## Overview of a Transaction
 
@@ -51,6 +51,8 @@ The overall lifecycle of a vending machine transaction consists of the following
 
 Notable portions of this codebase include:
 
+- `lib/constants.js`: Copy and other content-related settings.
+- `styles/tokens.scss`: Design tokens such as colors.
 - `pages/index.jsx`: The React page component that contains the majority of the UI and transaction polling / confirmation logic.
 - `pages/api/mint.js`: The API route that invokes Metaboss to mint an NFT.
 - `pages/api/transfer.js`: The API route that invokes spl-token to transfer an NFT.
@@ -60,7 +62,6 @@ Notable portions of this codebase include:
 ## To Do
 
 1. Right now this handles the payment to the merchant and the minting of the NFT as two separate transactions. Ideally, this should be refactored to be a fully on-chain, atomic transaction that will automatically return funds to the customer in the event of a mint failure.
-2. Refactor assorted UI components to focus reusability and standardization.
 
 ## Additional Resources
 

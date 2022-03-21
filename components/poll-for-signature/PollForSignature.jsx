@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { INSTRUCTION_STEPS } from "../../lib/constants";
 import ContentContainer from "../content-container/ContentContainer";
 import QRCode from "../qr-code/QRCode";
 import Instruction from "../instruction/Instruction";
 import styles from "./PollForSignature.module.scss";
+import SupportedWallets from "../supported-wallets/SupportedWallets";
+import HeroCopy from "./HeroCopy";
+import CreditLine from "./CreditLine";
 
 const PollForSignature = ({ qrCodeParams }) => {
   const [currentInstruction, setCurrentInstruction] = useState(1);
@@ -24,18 +26,19 @@ const PollForSignature = ({ qrCodeParams }) => {
 
   return (
     <div className={styles.container}>
+      <HeroCopy />
       <ContentContainer>
         <QRCode qrCodeParams={qrCodeParams} />
       </ContentContainer>
 
       <div className={styles.instructions}>
-        <AnimatePresence>
-          <Instruction
-            stepNumber={currentInstruction}
-            stepText={INSTRUCTION_STEPS[currentInstruction - 1]}
-          />
-        </AnimatePresence>
+        <Instruction
+          stepNumber={currentInstruction}
+          stepText={INSTRUCTION_STEPS[currentInstruction - 1]}
+        />
       </div>
+      <SupportedWallets />
+      <CreditLine />
     </div>
   );
 };

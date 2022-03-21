@@ -1,13 +1,48 @@
 @use "./tokens.scss";
 
+* {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	background: tokens.$grey-100;
 	color: tokens.$grey-900;
+	font-size: 16px;
+	line-height: 1.5;
 	padding: 0;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-weight: 700;
+}
+
+h2 {
+	font-weight: 400;
+}
+
+h3 {
+	font-weight: 400;
 }
 
 a {
@@ -15,6 +50,14 @@ a {
 	text-decoration: none;
 }
 
-* {
-	box-sizing: border-box;
+$level-size: 0.4rem;
+$type-levels: 6, 5, 4, 3, 2, 1;
+$type-size-ratio: 1.333;
+
+@each $level in $type-levels {
+	$level-size: $level-size * $type-size-ratio;
+
+	h#{$level} {
+		font-size: $level-size;
+	}
 }

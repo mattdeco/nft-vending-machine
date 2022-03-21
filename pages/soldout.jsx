@@ -1,4 +1,5 @@
 import React from "react";
+import AmbientBackground from "../components/ambient-background/AmbientBackground";
 import ContentContainer from "../components/content-container/ContentContainer";
 import Header from "../components/header/Header";
 import styles from "./soldout.module.scss";
@@ -6,6 +7,7 @@ import styles from "./soldout.module.scss";
 const Soldout = () => {
   return (
     <div className={styles.container}>
+      <AmbientBackground />
       <Header />
       <main className={styles.main}>
         <ContentContainer>
