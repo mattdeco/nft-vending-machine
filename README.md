@@ -1,5 +1,7 @@
 # Solana NFT Vending Machine
 
+![Screenshot of main UI](/public/images/readme-screenshot.jpg)
+
 This is a proof of concept of an NFT vending machine built using [Solana Pay](https://solanapay.com), [Metaplex](https://www.metaplex.com), [Phantom Mobile](https://phantom.app), and [Next.js](https://nextjs.org). This was created and demoed at the 2022 Los Angeles Hacker House presented by Solana and FTX US.
 
 ## Dependencies
